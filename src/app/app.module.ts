@@ -5,6 +5,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { VoziloComponent } from './vozilo/vozilo.component';
@@ -17,6 +21,18 @@ import { StavkaPorudzbineComponent } from './stavka-porudzbine/stavka-porudzbine
 import { HomeComponent } from './core/home/home.component';
 import { AboutComponent } from './core/about/about.component';
 import { AuthorComponent } from './core/author/author.component';
+import { Routes, RouterModule } from '@angular/router';
+import { ArtiklService } from './service/artikl.service';
+
+
+const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
+                {path: 'artikl', component: ArtiklComponent},
+                {path: 'dobavljac', component: DobavljacComponent},
+                {path: 'porudzbina', component: PorudzbinaComponent},
+                {path: 'stavkaPorudzbine', component: StavkaPorudzbineComponent},
+                {path: 'home', component: HomeComponent},
+                {path: 'author', component: AuthorComponent},
+                {path: 'about', component: AboutComponent}];
 
 @NgModule({
   declarations: [
@@ -38,9 +54,14 @@ import { AuthorComponent } from './core/author/author.component';
     MatSidenavModule,
     MatExpansionModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatTableModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ArtiklService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
