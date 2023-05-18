@@ -1,5 +1,5 @@
 .container {
-  display : flex;
+  display:flex;
   flex-basis: column;
 }
 
@@ -13,7 +13,7 @@
   cursor: pointer;
 }
 
-.example-button-row{
+.example-button-row {
   display: flex;
   align-items: left;
 }

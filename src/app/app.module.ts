@@ -8,7 +8,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { VoziloComponent } from './vozilo/vozilo.component';
@@ -23,6 +25,9 @@ import { AboutComponent } from './core/about/about.component';
 import { AuthorComponent } from './core/author/author.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ArtiklService } from './service/artikl.service';
+import { ArtiklDialogComponent } from './dialog/artikl-dialog/artikl-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -45,7 +50,8 @@ const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
     StavkaPorudzbineComponent,
     HomeComponent,
     AboutComponent,
-    AuthorComponent
+    AuthorComponent,
+    ArtiklDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +65,10 @@ const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
     MatToolbarModule,
     MatFormFieldModule,
     MatTableModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatInputModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ArtiklService],
