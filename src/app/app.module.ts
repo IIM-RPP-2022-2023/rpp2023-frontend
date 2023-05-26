@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppComponent } from './app.component';
 import { VoziloComponent } from './vozilo/vozilo.component';
@@ -28,6 +29,15 @@ import { ArtiklService } from './service/artikl.service';
 import { ArtiklDialogComponent } from './dialog/artikl-dialog/artikl-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { DobavljacDialogComponent } from './dialog/dobavljac-dialog/dobavljac-dialog.component';
+import { StavkaPorudzbineDialogComponent } from './dialog/stavka-porudzbine-dialog/stavka-porudzbine-dialog.component';
+import { PorudzbinaDialogComponent } from './dialog/porudzbina-dialog/porudzbina-dialog.component';
+import { DobavljacService } from './service/dobavljac.service';
+import { PorudzbinaService } from './service/porudzbina.service';
+import { StavkaPorudzbineService } from './service/stavka-porudzbine.service';
+import { MatSelectModule } from '@angular/material/select';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -51,7 +61,10 @@ const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
     HomeComponent,
     AboutComponent,
     AuthorComponent,
-    ArtiklDialogComponent
+    ArtiklDialogComponent,
+    DobavljacDialogComponent,
+    StavkaPorudzbineDialogComponent,
+    PorudzbinaDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,10 +81,14 @@ const routes: Routes = [{path: '', redirectTo: 'home', pathMatch: 'full'},
     MatSnackBarModule,
     MatDialogModule,
     MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ArtiklService],
+  providers: [{provide: MAT_DATE_LOCALE, useValue:'en-GB'}, ArtiklService, DobavljacService, PorudzbinaService, StavkaPorudzbineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

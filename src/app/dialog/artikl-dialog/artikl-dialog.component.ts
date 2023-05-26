@@ -33,8 +33,8 @@ export class ArtiklDialogComponent {
   }
 
   public delete(): void {
-    this.artiklService.deleteArtikl(this.data.id);
-    this.snackBar.open('Uspešno obrisan artikl ' + this.data.id, 'U redu', {duration: 2000});
+    this.artiklService.deleteArtikl(this.data);
+    this.snackBar.open('Uspešno obrisan artikl ' + this.data.naziv, 'U redu', {duration: 2000});
   }
 
   public cancel(): void {

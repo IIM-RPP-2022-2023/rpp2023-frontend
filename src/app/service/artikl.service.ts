@@ -32,8 +32,8 @@ export class ArtiklService{
     this.httpClient.put(this.API_URL + artikl.id, artikl).subscribe();
   }
 
-  public deleteArtikl(id: number): void {
-    this.httpClient.delete(this.API_URL + id).subscribe();
+  public deleteArtikl(artikl: Artikl): void {
+    this.httpClient.delete(this.API_URL + artikl.id).subscribe();
   }
 
 }
