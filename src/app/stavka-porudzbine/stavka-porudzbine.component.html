@@ -1,7 +1,12 @@
 <mat-toolbar color="primary">
   <span class="title-center">Stavke porudžbine</span>
 </mat-toolbar>
+
 <div class="container mat-elevation-z8">
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Pretražite stavke porudžbine">
+  </mat-form-field>
 
   <mat-table [dataSource]="dataSource" class="mat-cell" matSort>
 

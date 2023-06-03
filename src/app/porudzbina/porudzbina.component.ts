@@ -25,7 +25,14 @@ export class PorudzbinaComponent implements OnInit {
 
   selektovanaPorudzbina!: Porudzbina;
 
-  dataSource!: Observable<Porudzbina[]>;
+  //dataSource!: Observable<Porudzbina[]>;
+  dataSource!: MatTableDataSource<Porudzbina>;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+  @ViewChild(MatSort)
+  sort!: MatSort;
 
   constructor(public porudzbinaService: PorudzbinaService,
     public dialog: MatDialog) { }
@@ -35,7 +42,32 @@ export class PorudzbinaComponent implements OnInit {
   }
 
   public loadData(){
-    this.dataSource = this.porudzbinaService.getAllPorudzbina();
+    //this.dataSource = this.porudzbinaService.getAllPorudzbina();
+    this.porudzbinaService.getAllPorudzbina().subscribe( data => {
+      this.dataSource = new MatTableDataSource(data);
+
+      // pretraga po nazivu stranog kljuca
+      this.dataSource.filterPredicate = (data: any, filter: string) => {
+        const accumulator = (currentTerm: string, key: string) => {
+          return key === 'dobavljac' ? currentTerm + data.dobavljac.naziv : currentTerm + data[key];
+        };
+        const dataStr = Object.keys(data).reduce(accumulator, '').toLowerCase();
+        const transformedFilter = filter.trim().toLowerCase();
+        return dataStr.indexOf(transformedFilter) !== -1;
+      };
+
+      this.dataSource.sortingDataAccessor = (data:any, property) =>{
+        switch(property){
+          case 'id': return data[property];
+          case 'iznos': return data[property];
+          case 'placeno': return data[property];
+          case 'dobavljac': return data.dobavljac.naziv;
+          default: return data[property].toLocaleLowerCase();
+        }
+      };
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
 }
 
   public openDialog(flag: number, id: number, datum: Date, isporuceno: Date, iznos: number, placeno: boolean, dobavljac: Dobavljac) {
@@ -50,6 +82,12 @@ export class PorudzbinaComponent implements OnInit {
 
   public selectedRow(row: Porudzbina): void {
     this.selektovanaPorudzbina = row;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
 }

@@ -3,20 +3,26 @@
 </mat-toolbar>
 
 <div class="container mat-elevation-z8">
-  <mat-table [dataSource]="dataSource" class="mat-cell">
+
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Pretražite dobavljače">
+  </mat-form-field>
+
+
+  <mat-table [dataSource]="dataSource" class="mat-cell" matSort>
 
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="naziv">
-      <mat-header-cell *matHeaderCellDef>Naziv</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv</mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.naziv}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="adresa">
-      <mat-header-cell *matHeaderCellDef>Adresa</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Adresa</mat-header-cell>
       <mat-cell *matCellDef="let row">{{row.adresa}}</mat-cell>
     </ng-container>
 
@@ -46,5 +52,7 @@
     </mat-header-row>
 
   </mat-table>
-</div>
 
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>
+
+</div>
