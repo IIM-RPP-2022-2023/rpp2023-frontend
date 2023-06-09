@@ -3,6 +3,7 @@
   flex-direction: column;
   min-width: 450px;
   display: flex;
+  padding: 100px;
 }
 
 .form {
