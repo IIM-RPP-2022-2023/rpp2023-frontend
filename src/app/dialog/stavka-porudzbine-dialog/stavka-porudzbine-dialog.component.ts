@@ -37,7 +37,7 @@ export class StavkaPorudzbineDialogComponent implements OnInit {
 
   public add(): void {
     this.stavkaPorudzbineService.addStavkaPorudzbine(this.data);
-    this.snackBar.open('Uspešno dodata stavka porudžbine ' + this.data.id, 'Uredu', {duration: 2000});
+    this.snackBar.open('Uspešno dodata stavka porudžbine ', 'Uredu', {duration: 2000});
   }
 
   public update(): void {
