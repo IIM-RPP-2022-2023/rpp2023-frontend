@@ -7,7 +7,7 @@ import { Porudzbina } from '../model/porudzbina.model';
 @Injectable()
 export class PorudzbinaService {
 
-  private readonly API_URL = 'http://localhost:8082/porudzbina/';
+  private readonly API_URL = 'http://localhost:8082/porudzbina';
 
   dataChange: BehaviorSubject<Porudzbina[]> = new BehaviorSubject<Porudzbina[]>([]);
 

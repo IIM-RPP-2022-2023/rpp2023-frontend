@@ -6,7 +6,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 @Injectable()
 export class ArtiklService{
 
-  private readonly API_URL = 'http://localhost:8082/artikl/';
+  private readonly API_URL = 'http://localhost:8082/artikl';
 
   dataChange: BehaviorSubject<Artikl[]> = new BehaviorSubject<Artikl[]>([]);
 

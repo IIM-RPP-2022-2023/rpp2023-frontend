@@ -7,7 +7,7 @@ import { Dobavljac } from '../model/dobavljac.model';
 @Injectable()
 export class DobavljacService {
 
-  private readonly API_URL = 'http://localhost:8082/dobavljac/';
+  private readonly API_URL = 'http://localhost:8082/dobavljac';
 
   dataChange: BehaviorSubject<Dobavljac[]> = new BehaviorSubject<Dobavljac[]>([]);
 

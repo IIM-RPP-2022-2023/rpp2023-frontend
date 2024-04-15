@@ -7,9 +7,9 @@ import { StavkaPorudzbine } from '../model/stavka-porudzbine.model';
 @Injectable()
 export class StavkaPorudzbineService {
 
-  private readonly API_URL = 'http://localhost:8082/stavkaPorudzbine/';
+  private readonly API_URL = 'http://localhost:8082/stavkaPorudzbine';
 
-  private readonly API_URL_P = 'http://localhost:8082/stavkeZaPorudzbinu/';
+  private readonly API_URL_P = 'http://localhost:8082/stavkeZaPorudzbinu';
 
   dataChange: BehaviorSubject<StavkaPorudzbine[]> = new BehaviorSubject<StavkaPorudzbine[]>([]);
 
